@@ -254,6 +254,9 @@ nav.scrolled {
 .tab-btn.tab-jr { color: var(--green-ll); }
 .tab-btn.tab-jr::after { background: var(--green-l); }
 .tab-btn.tab-jr.active { color:var(--green-ll); }
+.tab-btn.tab-cream { color: #e8d5a3; }
+.tab-btn.tab-cream::after { background: #c8a96e; }
+.tab-btn.tab-cream.active { color: #f0dcb4; }
 
 /* Tab content */
 .tab-panel { display:none; animation: fadeIn .5s ease; }
