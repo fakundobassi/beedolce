@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BeeDolce — Miel Artesanal Pura</title>
+
+  <link rel="stylesheet" href="beedolce.css">
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="#" class="nav-logo">Bee<span>Dolce</span></a>
+    <ul class="nav-links">
+      <li><a href="#nosotros">Nosotros</a></li>
+      <li><a href="#productos">Productos</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hex-bg"></div>
+    <div class="hero-content">
+      <div class="hero-badge">Miel artesanal pura — Saladillo, Bs. As.</div>
+      <img src="img/logotransparente.png" alt="BeeDolce" class="hero-title"
+        style="display: block; margin: 0 auto; max-width: 500px; width: 100%; height: auto;">
+      <p class="hero-sub">Elegimos por vos. Solo la miel que vale la pena.</p>
+      <div class="hero-cta">
+        <a href="#productos" class="btn-primary">Nuestros productos</a>
+        <a href="#nosotros" class="btn-outline">Nuestra historia</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>Descubrí</span>
+    </div>
+  </section>
+
+  <div class="drip-bar">
+    <div class="drip"></div>
+    <div class="drip"></div>
+    <div class="drip"></div>
+    <div class="drip"></div>
+  </div>
+
+  <!-- BRAND INTRO -->
+  <section id="nosotros" class="reveal" style="background:var(--near-black)">
+    <div class="brand-intro">
+      <div class="brand-text">
+        <h2>No cualquier miel.<br><em>La mejor miel.</em></h2>
+        <p>BeeDolce es una marca de Inderco, Saladillo. No producimos miel — la seleccionamos. Probamos los mejores
+          productos del pais y elegimos únicamente la miel que cumple nuestros estándares.</p>
+        <p>El resultado: miel pura, sin aditivos, sin conservantes, sin colorantes. Solo lo que la naturaleza produjo.
+        </p>
+        <div class="brand-stats">
+          <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Natural</span></div>
+          <div class="stat"><span class="stat-num">0</span><span class="stat-label">Aditivos</span></div>
+          <div class="stat"><span class="stat-num">3</span><span class="stat-label">Líneas</span></div>
+        </div>
+      </div>
+      <div class="brand-visual">
+        <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+          <div
+            style="position: absolute; width: 350px; height: 350px; background: radial-gradient(circle, rgba(212,160,23,0.35) 0%, rgba(212,160,23,0.08) 60%, transparent 100%); border-radius: 50%; filter: blur(50px); animation: float 6s ease-in-out infinite;">
+          </div>
+          <img src="img/frasco1.png" alt="BeeDolce Frasco"
+            style="max-width: 100%; height: auto; max-width: 280px; position: relative; z-index: 2; filter: drop-shadow(0 30px 50px rgba(212,160,23,0.3)); animation: float 6s ease-in-out infinite;">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRODUCTS -->
+  <section id="productos" class="products-section">
+    <div class="products-header reveal">
+      <span class="section-label">Nuestras líneas</span>
+      <h2 class="section-title">Tres productos,<br><em>un solo origen</em></h2>
+    </div>
+
+    <!-- TAB NAV -->
+    <div class="tab-nav">
+      <button class="tab-btn active" onclick="switchTab('energy')">⚡ BeeEnergy</button>
+      <button class="tab-btn tab-jr" onclick="switchTab('junior')">🐝 BeeJunior</button>
+    </div>
+
+    <!-- ═══ BEEENERGY ═══ -->
+    <div id="tab-energy" class="tab-panel active be-panel">
+
+      <div class="be-hero">
+        <div class="hex-bg" style="opacity:.03"></div>
+        <div>
+          <div class="be-badge">Sticks de miel para deportistas</div>
+          <img src="img/logoenergytransparente.png" alt="BeeEnergy" class="product-title"
+            style="display: block; width: 100%; height: auto; max-width: 300px;">
+          <p class="product-sub">Energía natural pura. Lista para cuando más la necesitás.</p>
+          <div class="tags">
+            <span class="tag">Sin aditivos</span>
+            <span class="tag">Sin conservantes</span>
+            <span class="tag">Sin colorantes</span>
+            <span class="tag">30g por stick</span>
+            <span class="tag">Apto celíacos</span>
+          </div>
+          <p style="font-size:14px;color:var(--gray);line-height:1.8">Un stick de miel pura de abeja, 30 gramos, formato
+            fácil de transportar. Ideal antes, durante o después de entrenar. Sin necesidad de agua, sin preparación —
+            lo abrís y listo.</p>
+        </div>
+        <div class="product-visual">
+          <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+            <div
+              style="position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(212,160,23,0.4) 0%, rgba(212,160,23,0.1) 70%, transparent 100%); border-radius: 50%; filter: blur(40px); animation: float 6s ease-in-out infinite;">
+            </div>
+            <img src="img/stick1.png" alt="BeeEnergy Stick"
+              style="max-width: 100%; height: auto; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(212,160,23,0.3)); animation: float 6s ease-in-out infinite;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <div class="feature-title">Energía inmediata</div>
+          <p class="feature-text">Los azúcares naturales de la miel se absorben rápidamente, brindando energía
+            disponible en minutos. Ideal como combustible pre y post entrenamiento.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🏃</span>
+          <div class="feature-title">Formato deportivo</div>
+          <p class="feature-text">El stick de 30g entra en cualquier bolsillo, morral o riñonera. Sin derramar, sin
+            ensuciar. Diseñado para llevarlo siempre.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🌿</span>
+          <div class="feature-title">100% natural</div>
+          <p class="feature-text">Ingredientes: Miel pura de abeja. Punto. Sin gel energético artificial, sin
+            conservantes, sin colorantes, sin saborizantes.</p>
+        </div>
+      </div>
+
+      <!-- Nutritional info -->
+      <div class="nutrition-section reveal">
+        <div>
+          <div class="nut-header">
+            <h3>Información nutricional</h3>
+            <p>Valores por porción y por 100g. Todos los valores corresponden a miel pura de abeja sin procesar.</p>
+          </div>
+          <div class="nut-portion">
+            <span>Tamaño de porción: <strong>1 stick = 30g</strong></span>
+            <span>Porciones por envase: <strong>1</strong></span>
+          </div>
+          <table class="nut-table">
+            <thead>
+              <tr>
+                <th>Nutriente</th>
+                <th>Por porción (30g)</th>
+                <th>Por 100g</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="main-row">
+                <td>Valor energético</td>
+                <td>91 kcal / 381 kJ</td>
+                <td>304 kcal / 1272 kJ</td>
+              </tr>
+              <tr class="main-row">
+                <td>Hidratos de carbono</td>
+                <td>24,7 g</td>
+                <td>82,4 g</td>
+              </tr>
+              <tr class="sub-row">
+                <td>De los cuales azúcares</td>
+                <td>24,6 g</td>
+                <td>82,1 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Proteínas</td>
+                <td>0,1 g</td>
+                <td>0,3 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Grasas totales</td>
+                <td>0 g</td>
+                <td>0 g</td>
+              </tr>
+              <tr class="sub-row">
+                <td>De las cuales saturadas</td>
+                <td>0 g</td>
+                <td>0 g</td>
+              </tr>
+              <tr class="sub-row">
+                <td>Grasas trans</td>
+                <td>0 g</td>
+                <td>0 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Fibra alimentaria</td>
+                <td>0,1 g</td>
+                <td>0,2 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Sodio</td>
+                <td>1 mg</td>
+                <td>4 mg</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">* %VD con base en una dieta de 2000 kcal/día — ANMAT Res. 2126/71</td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="anmat-badge">
+            <div class="oct-badge">
+              <span>EXCESO</span>
+              <span>EN</span>
+              <span>AZÚCARES</span>
+            </div>
+            <div class="anmat-text">Este producto contiene <strong>exceso en azúcares</strong> según Res. ANMAT
+              683/2023. Los azúcares presentes son propios de la miel pura — sin azúcares añadidos.</div>
+          </div>
+        </div>
+        <div class="info-cards">
+          <div class="info-card">
+            <h4>Ingredientes</h4>
+            <p>Miel pura de abeja.<br><em style="color:var(--gray);font-size:12px">Sin aditivos · Sin conservantes · Sin
+                colorantes · Sin saborizantes</em></p>
+          </div>
+          <div class="info-card">
+            <h4>Conservación y uso</h4>
+            <ul>
+              <li>Conservar en lugar fresco y seco</li>
+              <li>Alejado de fuentes de calor</li>
+              <li>No refrigerar</li>
+              <li>Consumir antes de la fecha indicada en la base</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Aptitud</h4>
+            <ul>
+              <li>Apto para celíacos</li>
+              <li>Apto para vegetarianos</li>
+              <li style="color:rgba(255,150,150,.8)">No apto para menores de 1 año</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Elaborado por</h4>
+            <p>Inderco · Saladillo, Buenos Aires, Argentina<br>
+              <em style="color:var(--gray);font-size:11px">RNPA: en trámite · Industria Argentina</em></p>
+          </div>
+          <div class="info-card">
+            <h4>¿Cuándo usarlo?</h4>
+            <ul>
+              <li>30 min antes de entrenar</li>
+              <li>Durante actividad física prolongada</li>
+              <li>Como recuperación post-ejercicio</li>
+              <li>Energía rápida en cualquier momento</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ BEEJUNIOR ═══ -->
+    <div id="tab-junior" class="tab-panel jr-panel">
+      <div class="jr-hero">
+        <div>
+          <div class="jr-badge">Sticks de miel para niños</div>
+          <img src="img/logobeejuniortransparente.png" alt="BeeEnergy" class="product-title"
+            style="display: block; width: 100%; height: auto; max-width: 300px;">
+          <p class="product-sub jr-product-sub" style="margin-bottom:28px">La dulzura natural que los chicos merecen.
+          </p>
+          <div class="tags">
+            <span class="jr-tag">Sin azúcar añadida</span>
+            <span class="jr-tag">Sin colorantes</span>
+            <span class="jr-tag">Sin conservantes</span>
+            <span class="jr-tag">Miel pura</span>
+          </div>
+          <div class="jr-features" style="margin-top:24px">
+            <div class="jr-feature">
+              <span class="jr-feature-icon">🍯</span>
+              <div class="jr-feature-text">
+                <h4>Miel pura, nada más</h4>
+                <p>Un solo ingrediente: miel pura de abeja. Sin ningún aditivo, sin ninguna trampa.</p>
+              </div>
+            </div>
+            <div class="jr-feature">
+              <span class="jr-feature-icon">🎒</span>
+              <div class="jr-feature-text">
+                <h4>Para la mochila</h4>
+                <p>Tamaño perfecto para llevar al colegio, al deporte o de paseo.</p>
+              </div>
+            </div>
+            <div class="jr-feature">
+              <span class="jr-feature-icon">✅</span>
+              <div class="jr-feature-text">
+                <h4>Recomendado por pediatras</h4>
+                <p>Con aval de médicos pediatras de hospitales públicos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="product-visual">
+          <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+            <div
+              style="position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(212,160,23,0.4) 0%, rgba(212,160,23,0.1) 70%, transparent 100%); border-radius: 50%; filter: blur(40px); animation: float 6s ease-in-out infinite;">
+            </div>
+            <img src="img/stick2.png" alt="BeeJunior Stick"
+              style="max-width: 100%; height: auto; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(212,160,23,0.3)); animation: float 6s ease-in-out infinite;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Jr nutrition -->
+      <div class="jr-nutrition reveal">
+        <div class="jr-nut-note">
+          BeeDolce Junior está formulado para niños mayores de 1 año. La miel es un alimento natural rico en energía y
+          nutrientes, ideal para incorporar en la dieta infantil de manera saludable.
+        </div>
+        <div class="jr-nut-grid">
+          <div>
+            <div class="nut-header">
+              <h3 style="color:var(--green-ll)">Información nutricional</h3>
+              <p>Valores por porción (1 stick) y por 100g de miel pura.</p>
+            </div>
+            <div class="nut-portion" style="border-color:rgba(100,200,60,.15)">
+              <span>Tamaño de porción: <strong style="color:var(--green-ll)">1 stick</strong></span>
+              <span>Porciones: <strong style="color:var(--green-ll)">1</strong></span>
+            </div>
+            <table class="nut-table jr-nut-table">
+              <thead>
+                <tr>
+                  <th>Nutriente</th>
+                  <th>Por porción</th>
+                  <th>Por 100g</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="main-row">
+                  <td>Valor energético</td>
+                  <td style="color:var(--green-ll)">— kcal</td>
+                  <td>304 kcal</td>
+                </tr>
+                <tr class="main-row">
+                  <td>Hidratos de carbono</td>
+                  <td style="color:var(--green-ll)">— g</td>
+                  <td>82,4 g</td>
+                </tr>
+                <tr class="sub-row">
+                  <td>De los cuales azúcares</td>
+                  <td>— g</td>
+                  <td>82,1 g</td>
+                </tr>
+                <tr class="main-row">
+                  <td>Proteínas</td>
+                  <td style="color:var(--green-ll)">— g</td>
+                  <td>0,3 g</td>
+                </tr>
+                <tr class="main-row">
+                  <td>Grasas totales</td>
+                  <td style="color:var(--green-ll)">0 g</td>
+                  <td>0 g</td>
+                </tr>
+                <tr class="sub-row">
+                  <td>De las cuales saturadas</td>
+                  <td>0 g</td>
+                  <td>0 g</td>
+                </tr>
+                <tr class="sub-row">
+                  <td>Grasas trans</td>
+                  <td>0 g</td>
+                  <td>0 g</td>
+                </tr>
+                <tr class="main-row">
+                  <td>Fibra alimentaria</td>
+                  <td style="color:var(--green-ll)">— g</td>
+                  <td>0,2 g</td>
+                </tr>
+                <tr class="main-row">
+                  <td>Sodio</td>
+                  <td style="color:var(--green-ll)">— mg</td>
+                  <td>4 mg</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="3">* Los valores "—" se completarán al definir el peso final del stick. Los valores por
+                    100g son constantes. %VD base 2000 kcal/día — ANMAT Res. 2126/71</td>
+                </tr>
+              </tfoot>
+            </table>
+            <div class="anmat-badge" style="border-color:rgba(200,30,30,.25)">
+              <div class="oct-badge"><span>EXCESO</span><span>EN</span><span>AZÚCARES</span></div>
+              <div class="anmat-text">Contiene exceso en azúcares propios de la miel. Res. ANMAT 683/2023. Apto para
+                niños mayores de 1 año.</div>
+            </div>
+          </div>
+          <div class="jr-info-cards">
+            <div class="jr-info-card">
+              <h4>Ingredientes</h4>
+              <p>Miel pura de abeja.<br><em style="color:var(--gray);font-size:12px">Sin azúcar añadida · Sin colorantes
+                  · Sin conservantes · Sin saborizantes</em></p>
+            </div>
+            <div class="jr-info-card">
+              <h4>Aptitud</h4>
+              <ul>
+                <li>Apto para celíacos</li>
+                <li>Apto para vegetarianos</li>
+                <li>Recomendado para niños mayores de 1 año</li>
+                <li style="color:rgba(255,150,150,.8)">No apto para menores de 1 año</li>
+              </ul>
+            </div>
+            <div class="jr-info-card">
+              <h4>Conservación</h4>
+              <ul>
+                <li>Conservar en lugar fresco y seco</li>
+                <li>No refrigerar</li>
+                <li>Mantener fuera del alcance de niños pequeños</li>
+              </ul>
+            </div>
+            <div class="jr-info-card">
+              <h4>Ideas de uso</h4>
+              <ul>
+                <li>En el desayuno o merienda</li>
+                <li>Con tostadas o yogur</li>
+                <li>Snack natural en el recreo</li>
+                <li>Antes de actividades deportivas</li>
+                <li>Endulzante natural para infusiones</li>
+              </ul>
+            </div>
+            <div class="jr-info-card">
+              <h4>Elaborado por</h4>
+              <p>Inderco · Saladillo, Buenos Aires, Argentina<br>
+                <em style="color:var(--gray);font-size:11px">RNPA: en trámite · Industria Argentina<br>
+                  Avalado por pediatras de hospitales públicos</em></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DIVIDER JR -->
+  <div class="drip-bar green-drip" id="jr-drip" style="display:none">
+    <div class="drip"></div>
+    <div class="drip"></div>
+    <div class="drip"></div>
+  </div>
+
+  <!-- PHILOSOPHY -->
+  <section class="philosophy reveal" style="background:var(--near-black)">
+    <div class="hex-bg" style="opacity:.03"></div>
+    <p class="philosophy-quote">"Probamos miles. <span class="gold">Elegimos una.</span><br>Solo la miel que demuestra
+      ser la mejor lleva nuestro nombre."</p>
+    <p class="philosophy-author">BeeDolce · Inderco · Saladillo, Buenos Aires</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contacto" style="background:var(--near-black); padding: 80px 0;">
+    <div class="contact-section reveal">
+      <div class="contact-info">
+        <h2>Hablemos de <em>miel</em></h2>
+        <p>Si sos distribuidor, comercio o simplemente querés saber más sobre BeeDolce, estamos a disposición.
+          Trabajamos con dietéticas, gimnasios, ferias y comercios de todo el país.</p>
+        <div class="contact-detail">
+          <div class="contact-item">
+            <div class="contact-item-icon">📍</div>
+            <div class="contact-item-text">
+              <strong>Ubicación</strong>
+              Saladillo, Buenos Aires, Argentina
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🏢</div>
+            <div class="contact-item-text">
+              <strong>Empresa</strong>
+              Inderco
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-item-icon">🍯</div>
+            <div class="contact-item-text">
+              <strong>Productos</strong>
+              BeeDolce · BeeEnergy · BeeJunior
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <span class="section-label" style="display:block;margin-bottom:20px">Nuestras líneas</span>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <div
+            style="background:var(--dark2);border:1px solid rgba(212,160,23,.1);padding:28px;display:flex;align-items:center;gap:20px">
+            <span style="font-size:32px">🍯</span>
+            <div>
+              <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold)">
+                BeeDolce</div>
+              <div style="font-size:12px;color:var(--gray);margin-top:4px">Miel artesanal premium en frascos · 250g ·
+                500g · 900g</div>
+            </div>
+          </div>
+          <div
+            style="background:var(--dark2);border:1px solid rgba(212,160,23,.1);padding:28px;display:flex;align-items:center;gap:20px">
+            <span style="font-size:32px">⚡</span>
+            <div>
+              <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold-l)">
+                BeeEnergy</div>
+              <div style="font-size:12px;color:var(--gray);margin-top:4px">Sticks de miel 30g para deportistas</div>
+            </div>
+          </div>
+          <div
+            style="background:var(--dark2);border:1px solid rgba(100,200,60,.1);padding:28px;display:flex;align-items:center;gap:20px">
+            <span style="font-size:32px">🐝</span>
+            <div>
+              <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--green-ll)">
+                BeeJunior</div>
+              <div style="font-size:12px;color:var(--gray);margin-top:4px">Sticks de miel para niños · sin aditivos
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">Bee<em>Dolce</em></span>
+        <p>Miel artesanal pura de Saladillo, Buenos Aires. Elegimos por vos. Solo la miel que vale la pena.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Productos</h4>
+        <ul>
+          <li><a href="#">BeeDolce — Frascos premium</a></li>
+          <li><a href="#">BeeEnergy — Sticks deportivos</a></li>
+          <li><a href="#">BeeJunior — Para niños</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="#">Quiénes somos</a></li>
+          <li><a href="#">Nuestros apicultores</a></li>
+          <li><a href="#">Puntos de venta</a></li>
+          <li><a href="#">Distribuidores</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">RNPA en trámite</a></li>
+          <li><a href="#">Industria Argentina</a></li>
+          <li><a href="#">Inderco · Saladillo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BeeDolce · Inderco · Saladillo, Buenos Aires, Argentina</span>
+      <span>Miel pura · Sin aditivos · Sin conservantes</span>
+    </div>
+  </footer>
+
+  <script src="beedolce.js"></script>
+</body>
+
+</html>
