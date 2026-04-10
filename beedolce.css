@@ -257,6 +257,9 @@ nav.scrolled {
 .tab-btn.tab-cream { color: #e8d5a3; }
 .tab-btn.tab-cream::after { background: #c8a96e; }
 .tab-btn.tab-cream.active { color: #f0dcb4; }
+.tab-btn.tab-pura { color: var(--gold-l); }
+.tab-btn.tab-pura::after { background: var(--gold); }
+.tab-btn.tab-pura.active { color: var(--gold); }
 
 /* Tab content */
 .tab-panel { display:none; animation: fadeIn .5s ease; }

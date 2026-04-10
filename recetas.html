@@ -1,0 +1,1109 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Recetas con Miel — BeeDolce</title>
+
+  <link rel="stylesheet" href="beedolce.css">
+  <style>
+    @media (max-width: 768px) {
+      #cursor, #cursorRing { display: none !important; }
+    }
+
+    /* ── RECETAS HERO ── */
+    .recetas-hero {
+      position: relative;
+      padding: 180px 60px 100px;
+      text-align: center;
+      overflow: hidden;
+    }
+    .recetas-hero .hex-bg { opacity: .03; }
+    .recetas-hero-badge {
+      display: inline-block;
+      font-size: 10px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold); border: 1px solid rgba(212,160,23,.4);
+      padding: 8px 20px; border-radius: 2px; margin-bottom: 30px;
+      animation: fadeUp .8s ease both;
+    }
+    .recetas-hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(48px, 8vw, 100px);
+      font-weight: 900; line-height: .95;
+      letter-spacing: -2px;
+      animation: fadeUp .8s .15s ease both;
+    }
+    .recetas-hero h1 em { color: var(--gold); font-style: italic; }
+    .recetas-hero p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(16px, 2vw, 22px);
+      color: var(--gray); letter-spacing: 3px;
+      margin: 24px auto 0; max-width: 560px;
+      animation: fadeUp .8s .3s ease both;
+    }
+
+    /* ── FILTROS ── */
+    .filtros {
+      display: flex; justify-content: center;
+      gap: 10px; flex-wrap: wrap;
+      padding: 60px 60px 0;
+    }
+    .filtro-btn {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+      padding: 10px 24px;
+      background: transparent;
+      border: 1px solid rgba(212,160,23,.25);
+      color: var(--gray);
+      cursor: none;
+      transition: all .25s;
+      border-radius: 2px;
+    }
+    .filtro-btn:hover, .filtro-btn.active {
+      background: rgba(212,160,23,.1);
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    /* ── RECETA DESTACADA ── */
+    .receta-featured {
+      margin: 60px 60px 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid rgba(212,160,23,.12);
+      background: var(--dark);
+      overflow: hidden;
+    }
+    .receta-featured-img {
+      position: relative;
+      min-height: 420px;
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 50%, rgba(212,160,23,.15) 0%, rgba(212,160,23,.03) 60%, transparent 100%);
+      overflow: hidden;
+    }
+    .receta-featured-img .hex-bg { opacity: .04; }
+    .receta-featured-emoji {
+      font-size: 120px;
+      filter: drop-shadow(0 20px 40px rgba(212,160,23,.3));
+      animation: float 6s ease-in-out infinite;
+      position: relative; z-index: 2;
+    }
+    .receta-featured-content {
+      padding: 56px 52px;
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .receta-featured-label {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .receta-featured h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 3vw, 42px);
+      font-weight: 900; line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    .receta-featured h2 em { color: var(--gold); }
+    .receta-featured p {
+      font-size: 14px; color: var(--gray); line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .receta-meta {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .receta-meta-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--lgray);
+    }
+    .receta-meta-item span:first-child { font-size: 16px; }
+    .receta-meta-item strong { color: var(--gold); }
+
+    /* ── GRID DE RECETAS ── */
+    .recetas-grid {
+      padding: 60px 60px 0;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2px;
+    }
+    .receta-card {
+      background: var(--dark);
+      border: 1px solid rgba(212,160,23,.08);
+      overflow: hidden;
+      transition: border-color .3s, transform .3s;
+      cursor: none;
+      position: relative;
+    }
+    .receta-card:hover {
+      border-color: rgba(212,160,23,.3);
+      transform: translateY(-4px);
+      z-index: 2;
+    }
+    .receta-card-img {
+      height: 180px;
+      display: flex; align-items: center; justify-content: center;
+      background: radial-gradient(circle at 50% 60%, rgba(212,160,23,.12) 0%, transparent 70%);
+      font-size: 72px;
+      position: relative;
+      overflow: hidden;
+    }
+    .receta-card-img .hex-bg { opacity: .03; }
+    .receta-categoria {
+      position: absolute; top: 14px; left: 14px;
+      font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+      color: var(--gold); background: rgba(212,160,23,.1);
+      border: 1px solid rgba(212,160,23,.2);
+      padding: 4px 10px; border-radius: 2px;
+    }
+    .receta-card-body { padding: 24px; }
+    .receta-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 10px; line-height: 1.2;
+    }
+    .receta-card p {
+      font-size: 13px; color: var(--gray);
+      line-height: 1.7; margin-bottom: 20px;
+    }
+    .receta-card-meta {
+      display: flex; gap: 16px;
+      font-size: 11px; color: var(--lgray);
+      border-top: 1px solid rgba(255,255,255,.05);
+      padding-top: 16px;
+    }
+    .receta-card-meta span { display: flex; align-items: center; gap: 5px; }
+    .receta-card-meta strong { color: var(--gold-l); }
+
+    /* ── MODAL DE RECETA ── */
+    .modal-overlay {
+      display: none;
+      position: fixed; inset: 0; z-index: 1000;
+      background: rgba(0,0,0,.85);
+      backdrop-filter: blur(8px);
+      align-items: center; justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.open { display: flex; }
+    .modal {
+      background: var(--dark);
+      border: 1px solid rgba(212,160,23,.2);
+      max-width: 800px; width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+      animation: fadeUp .3s ease;
+    }
+    .modal-close {
+      position: sticky; top: 0;
+      display: flex; justify-content: flex-end;
+      padding: 16px 20px 0;
+      background: var(--dark);
+      z-index: 10;
+    }
+    .modal-close button {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,.1);
+      color: var(--gray); font-size: 20px;
+      width: 36px; height: 36px;
+      cursor: none;
+      transition: border-color .2s, color .2s;
+    }
+    .modal-close button:hover { border-color: var(--gold); color: var(--gold); }
+    .modal-body { padding: 0 40px 40px; }
+    .modal-emoji { font-size: 64px; margin-bottom: 20px; display: block; }
+    .modal-label {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 12px;
+    }
+    .modal-body h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px; font-weight: 900;
+      margin-bottom: 10px; line-height: 1.1;
+    }
+    .modal-body h2 em { color: var(--gold); }
+    .modal-body > p {
+      font-size: 14px; color: var(--gray); line-height: 1.8;
+      margin-bottom: 28px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .modal-meta {
+      display: flex; gap: 24px; flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .modal-meta-item {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 12px; color: var(--lgray);
+    }
+    .modal-meta-item span:first-child { font-size: 16px; }
+    .modal-meta-item strong { color: var(--gold); }
+    .modal-cols {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr;
+      gap: 32px;
+    }
+    .modal-section h4 {
+      font-size: 10px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 16px;
+    }
+    .ingredientes-list {
+      list-style: none;
+      font-size: 13px; color: var(--lgray);
+      line-height: 2;
+    }
+    .ingredientes-list li {
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .ingredientes-list li::before {
+      content: '—'; color: var(--gold); flex-shrink: 0;
+      font-size: 10px;
+    }
+    .ingredientes-list .miel-item { color: var(--gold-l); }
+    .pasos-list {
+      list-style: none;
+      font-size: 13px; color: var(--lgray);
+      line-height: 1.7;
+    }
+    .pasos-list li {
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      display: flex; gap: 16px;
+    }
+    .paso-num {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px; font-weight: 900;
+      color: rgba(212,160,23,.25);
+      flex-shrink: 0; line-height: 1.2;
+    }
+    .modal-tip {
+      margin-top: 28px;
+      padding: 18px 20px;
+      background: rgba(212,160,23,.06);
+      border-left: 3px solid var(--gold);
+      font-size: 13px; color: var(--lgray); line-height: 1.7;
+    }
+    .modal-tip strong { color: var(--gold-l); }
+
+    /* ── SECCIÓN CITA ── */
+    .recetas-cita {
+      margin: 80px 60px 0;
+      padding: 60px;
+      background: var(--dark);
+      border: 1px solid rgba(212,160,23,.1);
+      text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .recetas-cita .hex-bg { opacity: .03; }
+    .recetas-cita p {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(22px, 3vw, 34px);
+      font-style: italic; line-height: 1.5;
+      color: var(--lgray);
+    }
+    .recetas-cita em { color: var(--gold); font-style: italic; }
+    .recetas-cita small {
+      display: block; margin-top: 20px;
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--gray);
+    }
+
+    /* ── NEWSLETTER / CTA ── */
+    .recetas-cta {
+      margin: 80px 60px 0;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 2px;
+    }
+    .recetas-cta-card {
+      background: var(--dark); padding: 52px;
+      border: 1px solid rgba(212,160,23,.1);
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .recetas-cta-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px; font-weight: 900; margin-bottom: 12px;
+    }
+    .recetas-cta-card h3 em { color: var(--gold); }
+    .recetas-cta-card p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 28px; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .recetas-grid { grid-template-columns: repeat(2, 1fr); }
+      .receta-featured { grid-template-columns: 1fr; }
+      .receta-featured-img { min-height: 260px; }
+      .modal-cols { grid-template-columns: 1fr; }
+      .recetas-cta { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .recetas-hero { padding: 140px 24px 60px; }
+      .filtros { padding: 40px 24px 0; }
+      .receta-featured { margin: 40px 24px 0; }
+      .recetas-grid { grid-template-columns: 1fr; padding: 40px 24px 0; }
+      .recetas-cita { margin: 40px 24px 0; padding: 40px 24px; }
+      .recetas-cta { margin: 40px 24px 0; }
+      .recetas-cta-card { padding: 32px 24px; }
+      .modal-body { padding: 0 24px 32px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- NAV -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Bee<span>Dolce</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#nosotros">Nosotros</a></li>
+      <li><a href="index.html#productos">Productos</a></li>
+      <li><a href="recetas.html">Recetas</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="recetas-hero">
+    <div class="hex-bg"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 40%, rgba(212,160,23,.07) 0%, transparent 70%);pointer-events:none"></div>
+    <div style="position:relative;z-index:2">
+      <div class="recetas-hero-badge">Cocina con miel artesanal</div>
+      <h1>Recetas con<br><em>Miel BeeDolce</em></h1>
+      <p>Simples o sofisticadas. Dulces o saladas. Todas con el mismo ingrediente estrella.</p>
+    </div>
+  </section>
+
+  <div class="drip-bar">
+    <div class="drip"></div>
+    <div class="drip"></div>
+    <div class="drip"></div>
+    <div class="drip"></div>
+  </div>
+
+  <!-- FILTROS -->
+  <div class="filtros reveal">
+    <button class="filtro-btn active" onclick="filtrar('todas', this)">Todas</button>
+    <button class="filtro-btn" onclick="filtrar('desayuno', this)">☀️ Desayuno</button>
+    <button class="filtro-btn" onclick="filtrar('bebidas', this)">🍵 Bebidas</button>
+    <button class="filtro-btn" onclick="filtrar('reposteria', this)">🍰 Repostería</button>
+    <button class="filtro-btn" onclick="filtrar('salado', this)">🍗 Salado</button>
+  </div>
+
+  <!-- RECETA DESTACADA -->
+  <div class="receta-featured reveal" style="margin-top:60px;margin-left:60px;margin-right:60px" data-cat="reposteria">
+    <div class="receta-featured-img">
+      <div class="hex-bg"></div>
+      <span class="receta-featured-emoji">🍰</span>
+    </div>
+    <div class="receta-featured-content">
+      <div class="receta-featured-label">⭐ Receta destacada — Repostería</div>
+      <h2>Torta húmeda<br>de <em>miel y almendras</em></h2>
+      <p>Una torta densa, aromática y con profundo sabor a miel. La miel cremada BeeDolce le da una textura jugosa que no se logra con azúcar refinada. Perfecta para servir tibia con un poco de crema.</p>
+      <div class="receta-meta">
+        <div class="receta-meta-item"><span>⏱</span> Tiempo: <strong>55 min</strong></div>
+        <div class="receta-meta-item"><span>👥</span> Porciones: <strong>8</strong></div>
+        <div class="receta-meta-item"><span>📊</span> Dificultad: <strong>Media</strong></div>
+      </div>
+      <button class="btn-primary" style="width:fit-content" onclick="abrirModal('torta-miel')">Ver receta completa</button>
+    </div>
+  </div>
+
+  <!-- GRID DE RECETAS -->
+  <div class="recetas-grid" id="recetas-grid" style="margin-top:2px">
+
+    <div class="receta-card reveal" data-cat="desayuno" onclick="abrirModal('tostada-ricota')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Desayuno</span>
+        <span style="font-size:72px;position:relative;z-index:2">🍞</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Tostadas con ricota y <em style="color:var(--gold)">miel</em></h3>
+        <p>Desayuno clásico elevado. Ricota fresca, nueces tostadas y un hilo generoso de miel pura BeeDolce sobre pan de masa madre.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>10 min</strong></span>
+          <span>👥 <strong>2 porciones</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="bebidas" onclick="abrirModal('te-jengibre')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Bebidas</span>
+        <span style="font-size:72px;position:relative;z-index:2">🍵</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Té de jengibre, limón y <em style="color:var(--gold)">miel</em></h3>
+        <p>La combinación perfecta para el invierno o cuando el cuerpo pide calma. La miel equilibra el picante del jengibre y potencia el limón.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>8 min</strong></span>
+          <span>👥 <strong>1 porción</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="desayuno" onclick="abrirModal('granola')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Desayuno</span>
+        <span style="font-size:72px;position:relative;z-index:2">🥣</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Granola artesanal con <em style="color:var(--gold)">miel</em></h3>
+        <p>Avena, frutos secos y coco tostados con miel pura. Sin azúcar agregada, sin conservantes. Sale crujiente, dorada y aromática.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>30 min</strong></span>
+          <span>👥 <strong>8 porciones</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="salado" onclick="abrirModal('pollo-miel')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Salado</span>
+        <span style="font-size:72px;position:relative;z-index:2">🍗</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Pollo glaseado con <em style="color:var(--gold)">miel</em> y mostaza</h3>
+        <p>El clásico agridulce perfecto. La miel carameliza en el horno y forma una costra dorada irresistible. Cinco ingredientes, resultado de restaurante.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>50 min</strong></span>
+          <span>👥 <strong>4 porciones</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="reposteria" onclick="abrirModal('cookies')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Repostería</span>
+        <span style="font-size:72px;position:relative;z-index:2">🍪</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Cookies de avena y <em style="color:var(--gold)">miel</em></h3>
+        <p>Sin azúcar refinada. La miel cremada les da un sabor profundo y caramelizado que el azúcar común no puede igualar. Crujientes por fuera, tiernas por dentro.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>25 min</strong></span>
+          <span>👥 <strong>20 cookies</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="bebidas" onclick="abrirModal('limonada')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Bebidas</span>
+        <span style="font-size:72px;position:relative;z-index:2">🍋</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Limonada natural con <em style="color:var(--gold)">miel</em></h3>
+        <p>Sin azúcar blanca. La miel disuelta en agua caliente crea un jarabe que endulza perfectamente sin el amargor del azúcar. Refrescante y natural.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>10 min</strong></span>
+          <span>👥 <strong>4 porciones</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="salado" onclick="abrirModal('vinagreta')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Salado</span>
+        <span style="font-size:72px;position:relative;z-index:2">🥗</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Vinagreta de <em style="color:var(--gold)">miel</em> y mostaza Dijon</h3>
+        <p>El aderezo que transforma cualquier ensalada. La miel equilibra la acidez del vinagre y crea una emulsión perfecta, sedosa y brillante.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>5 min</strong></span>
+          <span>👥 <strong>6 porciones</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="reposteria" onclick="abrirModal('peras')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Repostería</span>
+        <span style="font-size:72px;position:relative;z-index:2">🍐</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Peras al horno con <em style="color:var(--gold)">miel</em> y canela</h3>
+        <p>Postre elegante con tres ingredientes. La miel caramelizada sobre la pera asada crea un glaseado natural y brillante. Serví con yogur griego.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>30 min</strong></span>
+          <span>👥 <strong>4 porciones</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="receta-card reveal" data-cat="desayuno" onclick="abrirModal('yogur')">
+      <div class="receta-card-img">
+        <div class="hex-bg"></div>
+        <span class="receta-categoria">Desayuno</span>
+        <span style="font-size:72px;position:relative;z-index:2">🫙</span>
+      </div>
+      <div class="receta-card-body">
+        <h3>Bowl de yogur, frutas y <em style="color:var(--gold)">miel</em></h3>
+        <p>El desayuno nutritivo más simple. Yogur natural, frutas de estación y miel pura BeeDolce. Sin azúcar, sin ingredientes artificiales.</p>
+        <div class="receta-card-meta">
+          <span>⏱ <strong>5 min</strong></span>
+          <span>👥 <strong>1 porción</strong></span>
+          <span>📊 <strong>Fácil</strong></span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- CITA -->
+  <div class="recetas-cita reveal" style="margin-top:80px">
+    <div class="hex-bg"></div>
+    <p style="position:relative;z-index:2">"La miel no es solo un endulzante — es un ingrediente con carácter.<br><em>Con BeeDolce, cada receta empieza con lo mejor.</em>"</p>
+    <small style="position:relative;z-index:2">BeeDolce · Inderco · Saladillo, Buenos Aires</small>
+  </div>
+
+  <!-- CTA -->
+  <div class="recetas-cta reveal" style="margin-bottom:80px">
+    <div class="recetas-cta-card">
+      <div>
+        <h3>¿Querés la<br><em>miel para cocinar?</em></h3>
+        <p>Nuestros frascos de 500g y 900g son ideales para tener siempre miel de calidad en la cocina. Miel pura, sin aditivos, sin conservantes.</p>
+      </div>
+      <a href="index.html#productos" class="btn-primary" style="width:fit-content">Ver productos</a>
+    </div>
+    <div class="recetas-cta-card" style="border-color:rgba(212,160,23,.2)">
+      <div>
+        <h3>Miel cremada para<br><em>untar y hornear</em></h3>
+        <p>La miel cremada BeeDolce es perfecta para repostería: no escurre, se integra mejor en las mezclas y aporta un sabor profundo y caramelizado.</p>
+      </div>
+      <a href="index.html#productos" class="btn-outline" style="width:fit-content">Conocer la miel cremada</a>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="logo">Bee<em>Dolce</em></span>
+        <p>Miel artesanal pura de Saladillo, Buenos Aires. Elegimos por vos. Solo la miel que vale la pena.</p>
+      </div>
+      <div class="footer-links">
+        <h4>Productos</h4>
+        <ul>
+          <li><a href="index.html#productos">BeeDolce — Frascos premium</a></li>
+          <li><a href="index.html#productos">BeeEnergy — Sticks deportivos</a></li>
+          <li><a href="index.html#productos">BeeJunior — Para niños</a></li>
+          <li><a href="index.html#productos">Miel Cremada — Textura suave</a></li>
+          <li><a href="index.html#productos">Miel Pura — Frascos premium</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Información</h4>
+        <ul>
+          <li><a href="index.html#nosotros">Quiénes somos</a></li>
+          <li><a href="recetas.html">Recetas con miel</a></li>
+          <li><a href="index.html#contacto">Distribuidores</a></li>
+        </ul>
+      </div>
+      <div class="footer-links">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">RNPA en trámite</a></li>
+          <li><a href="#">Industria Argentina</a></li>
+          <li><a href="#">Inderco · Saladillo</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 BeeDolce · Inderco · Saladillo, Buenos Aires, Argentina</span>
+      <span>Miel pura · Sin aditivos · Sin conservantes</span>
+    </div>
+  </footer>
+
+  <!-- MODALES DE RECETAS -->
+
+  <div class="modal-overlay" id="modal-torta-miel">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('torta-miel')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🍰</span>
+        <div class="modal-label">Repostería · 55 min · 8 porciones</div>
+        <h2>Torta húmeda de <em>miel y almendras</em></h2>
+        <p>Una torta densa, aromática y con profundo sabor a miel. La miel cremada BeeDolce le da una textura jugosa que no se logra con azúcar refinada. Perfecta para servir tibia con crema batida o helado de vainilla.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Preparación: <strong>15 min</strong></div>
+          <div class="modal-meta-item"><span>🔥</span> Cocción: <strong>40 min</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Media</strong></div>
+          <div class="modal-meta-item"><span>🌡</span> Horno: <strong>170°C</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">180g Miel Cremada BeeDolce</li>
+              <li>200g harina 0000</li>
+              <li>150g almendras molidas</li>
+              <li>3 huevos</li>
+              <li>120ml aceite de girasol</li>
+              <li>80ml leche entera</li>
+              <li>1 cdta. bicarbonato</li>
+              <li>1 cdta. polvo de hornear</li>
+              <li>1 cdta. esencia de vainilla</li>
+              <li>Pizca de sal</li>
+              <li>Almendras fileteadas para decorar</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Precalentá el horno a 170°C. Enmantecá y enharinás un molde de 22cm.</span></li>
+              <li><span class="paso-num">02</span><span>Batí los huevos con la miel cremada hasta integrar. Agregá el aceite y la leche y mezclá.</span></li>
+              <li><span class="paso-num">03</span><span>Incorporá la harina, las almendras molidas, el bicarbonato, el polvo de hornear y la sal. Mezclar hasta integrar sin batir de más.</span></li>
+              <li><span class="paso-num">04</span><span>Volcá en el molde, distribuí almendras fileteadas por encima y llevá al horno 35-40 minutos.</span></li>
+              <li><span class="paso-num">05</span><span>Comprobá con palillo. Dejá enfriar 10 minutos en el molde antes de desmoldar.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> La miel cremada se integra mejor que la líquida en masas. No sustitúas por azúcar — el resultado sería completamente distinto. La torta se conserva húmeda hasta 4 días tapada.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-tostada-ricota">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('tostada-ricota')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🍞</span>
+        <div class="modal-label">Desayuno · 10 min · 2 porciones</div>
+        <h2>Tostadas con ricota y <em>miel</em></h2>
+        <p>El desayuno de siempre, pero con ingredientes que hacen la diferencia. Pan de masa madre, ricota fresca batida y la miel pura BeeDolce que aporta ese sabor floral e intenso que ningún endulzante artificial puede replicar.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Total: <strong>10 min</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">3-4 cdas. Miel Pura BeeDolce</li>
+              <li>4 rebanadas de pan de masa madre</li>
+              <li>150g ricota fresca</li>
+              <li>30g nueces</li>
+              <li>Ralladura de limón</li>
+              <li>Pizca de sal marina</li>
+              <li>Tomillo fresco (opcional)</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Tostá el pan hasta que esté dorado y crujiente.</span></li>
+              <li><span class="paso-num">02</span><span>Batí la ricota con una pizca de sal y ralladura de limón hasta que quede suave y cremosa.</span></li>
+              <li><span class="paso-num">03</span><span>Untá cada tostada generosamente con la ricota batida.</span></li>
+              <li><span class="paso-num">04</span><span>Distribuí las nueces partidas y terminá con un hilo generoso de miel pura BeeDolce.</span></li>
+              <li><span class="paso-num">05</span><span>Agregá tomillo fresco y flor de sal si tenés. Serví de inmediato.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> Usá la miel a temperatura ambiente para que fluya bien. En invierno, templá el frasco brevemente en agua tibia. La miel pura tiene notas florales que combinan perfectamente con el queso.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-te-jengibre">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('te-jengibre')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🍵</span>
+        <div class="modal-label">Bebidas · 8 min · 1 porción</div>
+        <h2>Té de jengibre, limón y <em>miel</em></h2>
+        <p>La infusión reconfortante por excelencia. El jengibre calienta, el limón aporta vitamina C y la miel BeeDolce equilibra todo con su dulzura natural y propiedades antibacterianas. Ideal para el invierno o cuando el cuerpo necesita un abrazo.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Total: <strong>8 min</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">1-2 cdas. Miel Pura BeeDolce</li>
+              <li>300ml agua caliente (no hirviendo)</li>
+              <li>3cm raíz de jengibre fresco</li>
+              <li>½ limón (jugo)</li>
+              <li>Canela en rama (opcional)</li>
+              <li>Cúrcuma en polvo (opcional)</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Pelá y rallá o cortá en rodajas finas el jengibre fresco.</span></li>
+              <li><span class="paso-num">02</span><span>Calentá el agua hasta 80-85°C (antes de hervir). No uses agua hirviendo: destruye las enzimas de la miel.</span></li>
+              <li><span class="paso-num">03</span><span>Colocá el jengibre en la taza y cubrí con el agua caliente. Dejá reposar 5 minutos.</span></li>
+              <li><span class="paso-num">04</span><span>Colá, agregá el jugo de limón y endulzá con miel pura BeeDolce.</span></li>
+              <li><span class="paso-num">05</span><span>Revolvé bien y disfrutá. Agregá cúrcuma si querés potenciar los beneficios antiinflamatorios.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> Nunca agregues la miel al agua hirviendo. Las temperaturas sobre 40°C degradan las enzimas y propóleos naturales de la miel. Esperá que el agua temple un poco antes de incorporarla.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-granola">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('granola')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🥣</span>
+        <div class="modal-label">Desayuno · 30 min · 8 porciones</div>
+        <h2>Granola artesanal con <em>miel</em></h2>
+        <p>La granola casera es diez veces mejor que la industrial, y con miel pura BeeDolce el resultado es espectacular: crujiente, dorada, con un aroma increíble al salir del horno. Sin azúcar agregada, sin conservantes, lista en 30 minutos.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Preparación: <strong>5 min</strong></div>
+          <div class="modal-meta-item"><span>🔥</span> Horno: <strong>25 min</strong></div>
+          <div class="modal-meta-item"><span>🌡</span> Temperatura: <strong>160°C</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">80g Miel Pura BeeDolce</li>
+              <li>300g avena arrollada gruesa</li>
+              <li>60ml aceite de coco</li>
+              <li>80g nueces picadas</li>
+              <li>60g almendras</li>
+              <li>40g coco rallado</li>
+              <li>1 cdta. canela</li>
+              <li>1 cdta. esencia de vainilla</li>
+              <li>Pizca de sal</li>
+              <li>Frutos rojos secos (al final)</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Precalentá el horno a 160°C. Cubrí una placa con papel manteca.</span></li>
+              <li><span class="paso-num">02</span><span>Mezclá la miel con el aceite de coco derretido y la vainilla en un bol grande.</span></li>
+              <li><span class="paso-num">03</span><span>Incorporá la avena, los frutos secos, el coco, la canela y la sal. Mezclá bien hasta cubrir todo.</span></li>
+              <li><span class="paso-num">04</span><span>Extendé en la placa formando una capa pareja. No revuelvas durante la cocción para que forme grumos.</span></li>
+              <li><span class="paso-num">05</span><span>Horneá 20-25 minutos hasta que esté dorada. Dejá enfriar completamente antes de romper en trozos.</span></li>
+              <li><span class="paso-num">06</span><span>Incorporá los frutos rojos secos una vez fría. Guardá en frasco hermético hasta 3 semanas.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> El secreto del crujiente es no moverla mientras se hornea. La miel forma una costra caramelizada al enfriarse. Si usás miel cremada, derretíla levemente antes de mezclar.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-pollo-miel">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('pollo-miel')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🍗</span>
+        <div class="modal-label">Salado · 50 min · 4 porciones</div>
+        <h2>Pollo glaseado con <em>miel</em> y mostaza</h2>
+        <p>El clásico agridulce que nunca falla. Cinco ingredientes, preparación mínima y resultado de restaurante. La miel BeeDolce carameliza en el horno formando una costra dorada brillante que hace que todos pregunten cuál es el secreto.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Marinado: <strong>15 min</strong></div>
+          <div class="modal-meta-item"><span>🔥</span> Horno: <strong>35 min</strong></div>
+          <div class="modal-meta-item"><span>🌡</span> Temperatura: <strong>200°C</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">80g Miel Pura BeeDolce</li>
+              <li>8 muslos de pollo con piel</li>
+              <li>3 cdas. mostaza Dijon</li>
+              <li>3 dientes de ajo picados</li>
+              <li>2 cdas. salsa de soja</li>
+              <li>Sal y pimienta negra</li>
+              <li>Romero fresco</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Mezclá la miel, la mostaza, el ajo, la salsa de soja, sal y pimienta en un bol.</span></li>
+              <li><span class="paso-num">02</span><span>Hacé cortes en la piel del pollo para que la marinada penetre. Cubrí bien con la mezcla.</span></li>
+              <li><span class="paso-num">03</span><span>Mariná al menos 15 minutos (o toda la noche en la heladera para más sabor).</span></li>
+              <li><span class="paso-num">04</span><span>Precalentá el horno a 200°C. Colocá el pollo en una asadera con la piel hacia arriba.</span></li>
+              <li><span class="paso-num">05</span><span>Horneá 30 minutos. A los 15 minutos, bañá con los jugos de la asadera. Los últimos 5 minutos, activá el grill para dorar la piel.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> La miel pura carameliza mejor que la industrializada porque no tiene glucosa agregada. Si querés más picante, añadí una cucharadita de ají molido a la marinada.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-cookies">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('cookies')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🍪</span>
+        <div class="modal-label">Repostería · 25 min · 20 cookies</div>
+        <h2>Cookies de avena y <em>miel</em></h2>
+        <p>Sin azúcar refinada, sin manteca. La miel cremada BeeDolce endulza y aglutina a la vez, creando cookies con un sabor profundo y caramelizado imposible de replicar con azúcar blanca. Crujientes por fuera, tiernas por dentro.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Preparación: <strong>10 min</strong></div>
+          <div class="modal-meta-item"><span>🔥</span> Horno: <strong>12 min</strong></div>
+          <div class="modal-meta-item"><span>🌡</span> Temperatura: <strong>175°C</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">100g Miel Cremada BeeDolce</li>
+              <li>200g avena arrollada</li>
+              <li>100g harina integral</li>
+              <li>80ml aceite de coco</li>
+              <li>1 huevo</li>
+              <li>1 cdta. esencia de vainilla</li>
+              <li>½ cdta. canela</li>
+              <li>½ cdta. bicarbonato</li>
+              <li>Pizca de sal</li>
+              <li>Chips de chocolate negro (opcional)</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Precalentá el horno a 175°C. Cubrí una placa con papel manteca.</span></li>
+              <li><span class="paso-num">02</span><span>Mezclá la miel cremada con el aceite de coco y el huevo hasta integrar.</span></li>
+              <li><span class="paso-num">03</span><span>Incorporá la avena, la harina, la canela, el bicarbonato y la sal. Mezclá bien.</span></li>
+              <li><span class="paso-num">04</span><span>Formá bolitas con las manos, colocá en la placa y aplastá suavemente.</span></li>
+              <li><span class="paso-num">05</span><span>Horneá 10-12 minutos. Parecen blandas al salir — se endurecen al enfriar. No las muevas hasta que estén frías.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> La miel cremada es ideal aquí porque no agrega humedad extra como la miel líquida. Guardá en frasco hermético — duran 5 días aunque rara vez llegan al segundo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-limonada">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('limonada')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🍋</span>
+        <div class="modal-label">Bebidas · 10 min · 4 porciones</div>
+        <h2>Limonada natural con <em>miel</em></h2>
+        <p>La diferencia entre una limonada con azúcar y una con miel BeeDolce es abismal. La miel aporta un dulzor más suave, con notas florales que complementan el limón. Sin el amargor que a veces deja el azúcar refinada.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Total: <strong>10 min</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">80g Miel Pura BeeDolce</li>
+              <li>4 limones (jugo)</li>
+              <li>1 litro de agua fría</li>
+              <li>100ml agua caliente</li>
+              <li>Hielo</li>
+              <li>Menta fresca</li>
+              <li>Rodajas de limón para decorar</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Primero hacé el jarabe de miel: disolvé la miel en los 100ml de agua caliente (no hirviendo) hasta que quede completamente líquida.</span></li>
+              <li><span class="paso-num">02</span><span>Dejá enfriar el jarabe a temperatura ambiente.</span></li>
+              <li><span class="paso-num">03</span><span>En una jarra, mezclá el jugo de limón con el jarabe de miel frío.</span></li>
+              <li><span class="paso-num">04</span><span>Agregá el litro de agua fría y mezclá. Probá y ajustá a tu gusto.</span></li>
+              <li><span class="paso-num">05</span><span>Serví sobre hielo con menta fresca y rodajas de limón.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> El jarabe de miel se puede preparar con anticipación y guardar en la heladera hasta 2 semanas. Hacelo en cantidad y tenés base para limonadas, aderezos e infusiones instantáneas.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-vinagreta">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('vinagreta')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🥗</span>
+        <div class="modal-label">Salado · 5 min · 6 porciones</div>
+        <h2>Vinagreta de <em>miel</em> y mostaza Dijon</h2>
+        <p>El aderezo que nunca falla. La miel actúa como emulsionante natural, creando una vinagreta sedosa y brillante que se adhiere perfectamente a las hojas. Transforma cualquier ensalada simple en algo memorable.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Total: <strong>5 min</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">2 cdas. Miel Pura BeeDolce</li>
+              <li>3 cdas. vinagre de vino tinto</li>
+              <li>1 cda. mostaza Dijon</li>
+              <li>6 cdas. aceite de oliva extra virgen</li>
+              <li>1 diente de ajo pequeño</li>
+              <li>Sal y pimienta negra</li>
+              <li>Tomillo o estragón (opcional)</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>En un frasco con tapa, colocá el vinagre, la mostaza, la miel, el ajo rallado, sal y pimienta.</span></li>
+              <li><span class="paso-num">02</span><span>Agregá el aceite de oliva.</span></li>
+              <li><span class="paso-num">03</span><span>Tapá y agitá vigorosamente hasta emulsionar. La miel ayuda a que no se separe.</span></li>
+              <li><span class="paso-num">04</span><span>Probá y ajustá el equilibrio ácido-dulce según tu gusto.</span></li>
+              <li><span class="paso-num">05</span><span>Guardá en heladera hasta 2 semanas. Agitá antes de cada uso.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> La miel pura funciona mejor que la industrializada en aderezos porque tiene menor contenido de agua y emulsiona de forma más estable. También probá esta vinagreta sobre quesos, carnes frías o vegetales asados.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-peras">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('peras')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🍐</span>
+        <div class="modal-label">Repostería · 30 min · 4 porciones</div>
+        <h2>Peras al horno con <em>miel</em> y canela</h2>
+        <p>Postre elegante con tres ingredientes. La miel caramelizada sobre la pera asada crea un glaseado natural y brillante que parece de pastelería. Servido con yogur griego o helado de vainilla es simplemente perfecto.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Preparación: <strong>5 min</strong></div>
+          <div class="modal-meta-item"><span>🔥</span> Horno: <strong>25 min</strong></div>
+          <div class="modal-meta-item"><span>🌡</span> Temperatura: <strong>190°C</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">4 cdas. Miel Pura BeeDolce</li>
+              <li>4 peras maduras (Williams o Bartlett)</li>
+              <li>1 cdta. canela en polvo</li>
+              <li>20g manteca</li>
+              <li>Jugo de ½ limón</li>
+              <li>Nueces para servir</li>
+              <li>Yogur griego o helado</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Precalentá el horno a 190°C. Cortá las peras al medio y retirá las semillas con una cuchara.</span></li>
+              <li><span class="paso-num">02</span><span>Colocá las mitades con el corte hacia arriba en una asadera.</span></li>
+              <li><span class="paso-num">03</span><span>En cada hueco, colocá un trocito de manteca, rociá con jugo de limón y espolvoreá canela.</span></li>
+              <li><span class="paso-num">04</span><span>Vertí la miel sobre cada pera generosamente.</span></li>
+              <li><span class="paso-num">05</span><span>Horneá 20-25 minutos hasta que las peras estén tiernas y la miel caramelizada. Bañá con los jugos a mitad de cocción.</span></li>
+              <li><span class="paso-num">06</span><span>Serví caliente con yogur griego, nueces y un extra de miel si querés.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> La miel no debe hervir más de lo necesario para no perder sus propiedades. El calor del horno a 190°C es suficiente para caramelizarla sin degradarla completamente.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal-yogur">
+    <div class="modal">
+      <div class="modal-close"><button onclick="cerrarModal('yogur')">✕</button></div>
+      <div class="modal-body">
+        <span class="modal-emoji">🫙</span>
+        <div class="modal-label">Desayuno · 5 min · 1 porción</div>
+        <h2>Bowl de yogur, frutas y <em>miel</em></h2>
+        <p>El desayuno nutritivo más simple que existe. Yogur natural, frutas de estación y miel pura BeeDolce. Sin azúcar, sin ingredientes artificiales. La miel aporta el dulzor justo y esa nota floral que hace que este bowl sea adictivo.</p>
+        <div class="modal-meta">
+          <div class="modal-meta-item"><span>⏱</span> Total: <strong>5 min</strong></div>
+          <div class="modal-meta-item"><span>📊</span> Dificultad: <strong>Fácil</strong></div>
+        </div>
+        <div class="modal-cols">
+          <div class="modal-section">
+            <h4>Ingredientes</h4>
+            <ul class="ingredientes-list">
+              <li class="miel-item">1-2 cdas. Miel Pura BeeDolce</li>
+              <li>200g yogur natural o griego</li>
+              <li>Frutas de estación (frutillas, banana, arándanos)</li>
+              <li>Granola casera</li>
+              <li>Semillas de chía</li>
+              <li>Coco rallado tostado</li>
+            </ul>
+          </div>
+          <div class="modal-section">
+            <h4>Preparación</h4>
+            <ol class="pasos-list">
+              <li><span class="paso-num">01</span><span>Colocá el yogur en un bowl amplio.</span></li>
+              <li><span class="paso-num">02</span><span>Distribuí las frutas cortadas encima del yogur.</span></li>
+              <li><span class="paso-num">03</span><span>Agregá la granola, las semillas de chía y el coco rallado.</span></li>
+              <li><span class="paso-num">04</span><span>Finalizá con un hilo generoso de miel pura BeeDolce justo antes de servir.</span></li>
+            </ol>
+            <div class="modal-tip"><strong>Consejo BeeDolce:</strong> Agregá la miel siempre al final, encima de todo. Así el hilo dorado es visible y la textura de la miel se mantiene. Si usás yogur natural sin azúcar, la miel se convierte en el único endulzante — elegí la cantidad según tu gusto.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="beedolce.js"></script>
+  <script>
+    // Filtro de categorías
+    function filtrar(cat, btn) {
+      document.querySelectorAll('.filtro-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      document.querySelectorAll('.receta-card, .receta-featured').forEach(card => {
+        const c = card.dataset.cat;
+        card.style.display = (cat === 'todas' || c === cat) ? '' : 'none';
+      });
+    }
+
+    // Modales
+    function abrirModal(id) {
+      document.getElementById('modal-' + id).classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+    function cerrarModal(id) {
+      document.getElementById('modal-' + id).classList.remove('open');
+      document.body.style.overflow = '';
+    }
+    // Cerrar modal al hacer click fuera
+    document.querySelectorAll('.modal-overlay').forEach(overlay => {
+      overlay.addEventListener('click', e => {
+        if (e.target === overlay) {
+          overlay.classList.remove('open');
+          document.body.style.overflow = '';
+        }
+      });
+    });
+    // Cerrar con Escape
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') {
+        document.querySelectorAll('.modal-overlay.open').forEach(m => {
+          m.classList.remove('open');
+          document.body.style.overflow = '';
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>

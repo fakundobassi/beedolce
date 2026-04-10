@@ -29,6 +29,7 @@
     <ul class="nav-links">
       <li><a href="#nosotros">Nosotros</a></li>
       <li><a href="#productos">Productos</a></li>
+      <li><a href="recetas.html">Recetas</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
   </nav>
@@ -96,7 +97,7 @@
   <section id="productos" class="products-section">
     <div class="products-header reveal">
       <span class="section-label">Nuestras líneas</span>
-      <h2 class="section-title">Tres productos,<br><em>un solo origen</em></h2>
+      <h2 class="section-title">Cuatro productos,<br><em>un solo origen</em></h2>
     </div>
 
     <!-- TAB NAV -->
@@ -104,6 +105,7 @@
       <button class="tab-btn active" onclick="switchTab('energy')">⚡ BeeEnergy</button>
       <button class="tab-btn tab-jr" onclick="switchTab('junior')">🐝 BeeJunior</button>
       <button class="tab-btn tab-cream" onclick="switchTab('cream')">🍦 Miel cremada</button>
+      <button class="tab-btn tab-pura" onclick="switchTab('pura')">🍯 Miel pura</button>
     </div>
 
     <!-- ═══ BEEENERGY ═══ -->
@@ -133,7 +135,7 @@
               style="position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(212,160,23,0.4) 0%, rgba(212,160,23,0.1) 70%, transparent 100%); border-radius: 50%; filter: blur(40px); animation: float 6s ease-in-out infinite;">
             </div>
             <img src="img/stick1.png" alt="BeeEnergy Stick"
-              style="max-width: 100%; height: auto; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(212,160,23,0.3)); animation: float 6s ease-in-out infinite;">
+              style="max-width: 100%; height: auto; max-width: 260px; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(240,220,180,0.3)) sepia(20%) brightness(1.05); animation: float 6s ease-in-out infinite;">
           </div>
         </div>
       </div>
@@ -289,7 +291,7 @@
         <div>
           <div class="jr-badge">Sticks de miel para niños</div>
           <img src="img/logobeejuniortransparente.png" alt="BeeEnergy" class="product-title"
-            style="display: block; width: 100%; height: auto; max-width: 300px;">
+            style="max-width: 100%; height: auto; max-width: 260px; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(240,220,180,0.3)) sepia(20%) brightness(1.05); animation: float 6s ease-in-out infinite;">
           <p class="product-sub jr-product-sub" style="margin-bottom:28px">La dulzura natural que los chicos merecen.
           </p>
           <div class="tags">
@@ -466,8 +468,11 @@
       <div class="be-hero">
         <div class="hex-bg" style="opacity:.03"></div>
         <div>
-          <div class="be-badge" style="background:rgba(240,220,180,.1);color:#e8d5a3;border-color:rgba(240,220,180,.2)">Miel artesanal cremada · Textura suave</div>
-          <h2 class="product-title" style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#f0dcb4;margin:20px 0 12px;line-height:1.1">Miel<br><em style="color:var(--gold)">Cremada</em></h2>
+          <div class="be-badge" style="background:rgba(240,220,180,.1);color:#e8d5a3;border-color:rgba(240,220,180,.2)">
+            Miel artesanal cremada · Textura suave</div>
+          <h2 class="product-title"
+            style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:#f0dcb4;margin:20px 0 12px;line-height:1.1">
+            Miel<br><em style="color:var(--gold)">Cremada</em></h2>
           <p class="product-sub" style="margin-bottom:28px">La miel de siempre, en su forma más suave y untable.</p>
           <div class="tags">
             <span class="tag" style="border-color:rgba(240,220,180,.25);color:#e8d5a3">Sin aditivos</span>
@@ -476,12 +481,17 @@
             <span class="tag" style="border-color:rgba(240,220,180,.25);color:#e8d5a3">Textura cremosa</span>
             <span class="tag" style="border-color:rgba(240,220,180,.25);color:#e8d5a3">Apto celíacos</span>
           </div>
-          <p style="font-size:14px;color:var(--gray);line-height:1.8;margin-top:20px">La miel cremada es miel pura procesada para controlar la cristalización natural, logrando una textura suave y untable. Mismos nutrientes, mismo origen — solo diferente consistencia. Ideal para untar, mezclar o disfrutar a cucharadas.</p>
+          <p style="font-size:14px;color:var(--gray);line-height:1.8;margin-top:20px">La miel cremada es miel pura
+            procesada para controlar la cristalización natural, logrando una textura suave y untable. Mismos nutrientes,
+            mismo origen — solo diferente consistencia. Ideal para untar, mezclar o disfrutar a cucharadas.</p>
         </div>
         <div class="product-visual">
           <div style="position: relative; display: flex; justify-content: center; align-items: center;">
-            <div style="position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(240,220,180,0.35) 0%, rgba(240,220,180,0.08) 70%, transparent 100%); border-radius: 50%; filter: blur(40px); animation: float 6s ease-in-out infinite;"></div>
-            <img src="img/frasco1.png" alt="Miel Cremada BeeDolce" style="max-width: 100%; height: auto; max-width: 260px; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(240,220,180,0.3)) sepia(20%) brightness(1.05); animation: float 6s ease-in-out infinite;">
+            <div
+              style="position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(240,220,180,0.35) 0%, rgba(240,220,180,0.08) 70%, transparent 100%); border-radius: 50%; filter: blur(40px); animation: float 6s ease-in-out infinite;">
+            </div>
+            <img src="img/frasco1.png" alt="Miel Cremada BeeDolce"
+              style="max-width: 100%; height: auto; max-width: 260px; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(240,220,180,0.3)) sepia(20%) brightness(1.05); animation: float 6s ease-in-out infinite;">
           </div>
         </div>
       </div>
@@ -491,17 +501,20 @@
         <div class="feature-card" style="border-color:rgba(240,220,180,.12)">
           <span class="feature-icon">🍞</span>
           <div class="feature-title">Perfecta para untar</div>
-          <p class="feature-text">Su textura suave y homogénea la hace ideal sobre tostadas, medialunas, pancakes o cualquier pan artesanal. No escurre, no mancha.</p>
+          <p class="feature-text">Su textura suave y homogénea la hace ideal sobre tostadas, medialunas, pancakes o
+            cualquier pan artesanal. No escurre, no mancha.</p>
         </div>
         <div class="feature-card" style="border-color:rgba(240,220,180,.12)">
           <span class="feature-icon">❄️</span>
           <div class="feature-title">Cristalización controlada</div>
-          <p class="feature-text">El cremado es un proceso natural que guía la cristalización de la miel hacia microcristales uniformes. Sin calor, sin aditivos — solo técnica apícola.</p>
+          <p class="feature-text">El cremado es un proceso natural que guía la cristalización de la miel hacia
+            microcristales uniformes. Sin calor, sin aditivos — solo técnica apícola.</p>
         </div>
         <div class="feature-card" style="border-color:rgba(240,220,180,.12)">
           <span class="feature-icon">🌿</span>
           <div class="feature-title">100% natural</div>
-          <p class="feature-text">Mismos valores nutricionales que la miel líquida. Solo cambia la textura. Ingrediente único: miel pura de abeja seleccionada por BeeDolce.</p>
+          <p class="feature-text">Mismos valores nutricionales que la miel líquida. Solo cambia la textura. Ingrediente
+            único: miel pura de abeja seleccionada por BeeDolce.</p>
         </div>
       </div>
 
@@ -510,7 +523,8 @@
         <div>
           <div class="nut-header">
             <h3 style="color:#f0dcb4">Información nutricional</h3>
-            <p>Valores por porción (1 cucharada = 20g) y por 100g. La cremación no altera los valores nutricionales de la miel.</p>
+            <p>Valores por porción (1 cucharada = 20g) y por 100g. La cremación no altera los valores nutricionales de
+              la miel.</p>
           </div>
           <div class="nut-portion">
             <span>Tamaño de porción: <strong>1 cucharada = 20g</strong></span>
@@ -583,13 +597,15 @@
               <span>EN</span>
               <span>AZÚCARES</span>
             </div>
-            <div class="anmat-text">Este producto contiene <strong>exceso en azúcares</strong> según Res. ANMAT 683/2023. Los azúcares presentes son propios de la miel pura — sin azúcares añadidos.</div>
+            <div class="anmat-text">Este producto contiene <strong>exceso en azúcares</strong> según Res. ANMAT
+              683/2023. Los azúcares presentes son propios de la miel pura — sin azúcares añadidos.</div>
           </div>
         </div>
         <div class="info-cards">
           <div class="info-card" style="border-color:rgba(240,220,180,.12)">
             <h4 style="color:#f0dcb4">Ingredientes</h4>
-            <p>Miel pura de abeja cremada.<br><em style="color:var(--gray);font-size:12px">Sin aditivos · Sin conservantes · Sin colorantes · Sin saborizantes</em></p>
+            <p>Miel pura de abeja cremada.<br><em style="color:var(--gray);font-size:12px">Sin aditivos · Sin
+                conservantes · Sin colorantes · Sin saborizantes</em></p>
           </div>
           <div class="info-card" style="border-color:rgba(240,220,180,.12)">
             <h4 style="color:#f0dcb4">Conservación y uso</h4>
@@ -623,6 +639,195 @@
               <li>Endulzante para infusiones tibias</li>
               <li>Con quesos y tabla de picada</li>
             </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ═══ MIEL PURA ═══ -->
+    <div id="tab-pura" class="tab-panel pura-panel">
+      <div class="be-hero">
+        <div class="hex-bg" style="opacity:.03"></div>
+        <div>
+          <div class="be-badge"
+            style="background:rgba(212,160,23,.1);color:var(--gold-l);border-color:rgba(212,160,23,.25)">Miel artesanal
+            · Frascos premium</div>
+          <h2 class="product-title"
+            style="font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.5rem);font-weight:900;color:var(--gold-l);margin:20px 0 12px;line-height:1.1">
+            Miel<br><em style="color:var(--gold)">Pura</em></h2>
+          <p class="product-sub" style="margin-bottom:28px">La esencia. Miel pura de abeja, directo del campo a tu mesa.
+          </p>
+          <div class="tags">
+            <span class="tag">Sin aditivos</span>
+            <span class="tag">Sin conservantes</span>
+            <span class="tag">Sin colorantes</span>
+            <span class="tag">Frasco 250g · 500g · 900g</span>
+            <span class="tag">Apto celíacos</span>
+          </div>
+          <p style="font-size:14px;color:var(--gray);line-height:1.8;margin-top:20px">Miel pura de abeja envasada en
+            frasco de vidrio premium. Sin ningún proceso más allá del filtrado y envasado en frío. Lo que las abejas
+            produjeron, nosotros lo seleccionamos y vos lo disfrutás.</p>
+        </div>
+        <div class="product-visual">
+          <div style="position: relative; display: flex; justify-content: center; align-items: center;">
+            <div
+              style="position: absolute; width: 280px; height: 280px; background: radial-gradient(circle, rgba(212,160,23,0.4) 0%, rgba(212,160,23,0.1) 70%, transparent 100%); border-radius: 50%; filter: blur(40px); animation: float 6s ease-in-out infinite;">
+            </div>
+            <img src="img/frasco2.png" alt="Miel Pura BeeDolce"
+              style="max-width: 100%; height: auto; max-width: 260px; position: relative; z-index: 2; filter: drop-shadow(0 20px 40px rgba(240,220,180,0.3)) sepia(20%) brightness(1.05); animation: float 6s ease-in-out infinite;">
+          </div>
+        </div>
+      </div>
+
+      <!-- Features -->
+      <div class="features-grid reveal">
+        <div class="feature-card">
+          <span class="feature-icon">🌸</span>
+          <div class="feature-title">Origen seleccionado</div>
+          <p class="feature-text">Probamos mieles de todo el país y solo elegimos la que cumple nuestros estándares de
+            pureza, aroma y sabor. Si no es la mejor, no lleva nuestro nombre.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🫙</span>
+          <div class="feature-title">Frasco de vidrio premium</div>
+          <p class="feature-text">Envasada en frasco de vidrio sellado al vacío, sin contacto con plástico. Tres
+            tamaños disponibles: 250g, 500g y 900g para toda la familia.</p>
+        </div>
+        <div class="feature-card">
+          <span class="feature-icon">🌿</span>
+          <div class="feature-title">Sin procesar</div>
+          <p class="feature-text">Solo filtrado y envasado en frío. Sin pasteurización, sin calentamiento excesivo. Se
+            preservan todas las enzimas, propóleos y antioxidantes naturales.</p>
+        </div>
+      </div>
+
+      <!-- Nutritional info -->
+      <div class="nutrition-section reveal">
+        <div>
+          <div class="nut-header">
+            <h3>Información nutricional</h3>
+            <p>Valores por porción (1 cucharada = 20g) y por 100g de miel pura de abeja sin procesar.</p>
+          </div>
+          <div class="nut-portion">
+            <span>Tamaño de porción: <strong>1 cucharada = 20g</strong></span>
+            <span>Porciones por envase: <strong>variable según formato</strong></span>
+          </div>
+          <table class="nut-table">
+            <thead>
+              <tr>
+                <th>Nutriente</th>
+                <th>Por porción (20g)</th>
+                <th>Por 100g</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="main-row">
+                <td>Valor energético</td>
+                <td>61 kcal / 254 kJ</td>
+                <td>304 kcal / 1272 kJ</td>
+              </tr>
+              <tr class="main-row">
+                <td>Hidratos de carbono</td>
+                <td>16,5 g</td>
+                <td>82,4 g</td>
+              </tr>
+              <tr class="sub-row">
+                <td>De los cuales azúcares</td>
+                <td>16,4 g</td>
+                <td>82,1 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Proteínas</td>
+                <td>0,1 g</td>
+                <td>0,3 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Grasas totales</td>
+                <td>0 g</td>
+                <td>0 g</td>
+              </tr>
+              <tr class="sub-row">
+                <td>De las cuales saturadas</td>
+                <td>0 g</td>
+                <td>0 g</td>
+              </tr>
+              <tr class="sub-row">
+                <td>Grasas trans</td>
+                <td>0 g</td>
+                <td>0 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Fibra alimentaria</td>
+                <td>0,1 g</td>
+                <td>0,2 g</td>
+              </tr>
+              <tr class="main-row">
+                <td>Sodio</td>
+                <td>1 mg</td>
+                <td>4 mg</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="3">* %VD con base en una dieta de 2000 kcal/día — ANMAT Res. 2126/71</td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="anmat-badge">
+            <div class="oct-badge">
+              <span>EXCESO</span>
+              <span>EN</span>
+              <span>AZÚCARES</span>
+            </div>
+            <div class="anmat-text">Este producto contiene <strong>exceso en azúcares</strong> según Res. ANMAT
+              683/2023. Los azúcares presentes son propios de la miel pura — sin azúcares añadidos.</div>
+          </div>
+        </div>
+        <div class="info-cards">
+          <div class="info-card">
+            <h4>Ingredientes</h4>
+            <p>Miel pura de abeja.<br><em style="color:var(--gray);font-size:12px">Sin aditivos · Sin conservantes ·
+                Sin colorantes · Sin saborizantes</em></p>
+          </div>
+          <div class="info-card">
+            <h4>Formatos disponibles</h4>
+            <ul>
+              <li>Frasco 250g — ideal para probar</li>
+              <li>Frasco 500g — uso familiar</li>
+              <li>Frasco 900g — gran consumidor</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Conservación</h4>
+            <ul>
+              <li>Conservar en lugar fresco y seco</li>
+              <li>No refrigerar</li>
+              <li>Alejado de fuentes de calor y luz directa</li>
+              <li>La cristalización es natural y no altera la calidad</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Aptitud</h4>
+            <ul>
+              <li>Apto para celíacos</li>
+              <li>Apto para vegetarianos</li>
+              <li style="color:rgba(255,150,150,.8)">No apto para menores de 1 año</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Ideas de uso</h4>
+            <ul>
+              <li>En el desayuno con tostadas o fruta</li>
+              <li>Para endulzar infusiones naturalmente</li>
+              <li>En recetas de repostería artesanal</li>
+              <li>Con quesos, yogur o granola</li>
+              <li>Como aderezo en ensaladas o carnes</li>
+            </ul>
+          </div>
+          <div class="info-card">
+            <h4>Elaborado por</h4>
+            <p>Inderco · Saladillo, Buenos Aires, Argentina<br>
+              <em style="color:var(--gray);font-size:11px">RNPA: en trámite · Industria Argentina</em></p>
           </div>
         </div>
       </div>
@@ -670,7 +875,7 @@
             <div class="contact-item-icon">🍯</div>
             <div class="contact-item-text">
               <strong>Productos</strong>
-              BeeDolce · BeeEnergy · BeeJunior · Miel Cremada
+              BeeDolce · BeeEnergy · BeeJunior · Miel Cremada · Miel Pura
             </div>
           </div>
         </div>
@@ -713,7 +918,18 @@
             <div>
               <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:#f0dcb4">
                 Miel Cremada</div>
-              <div style="font-size:12px;color:var(--gray);margin-top:4px">Miel artesanal cremada · textura suave y untable</div>
+              <div style="font-size:12px;color:var(--gray);margin-top:4px">Miel artesanal cremada · textura suave y
+                untable</div>
+            </div>
+          </div>
+          <div
+            style="background:var(--dark2);border:1px solid rgba(212,160,23,.2);padding:28px;display:flex;align-items:center;gap:20px">
+            <span style="font-size:32px">🍯</span>
+            <div>
+              <div style="font-family:'Playfair Display',serif;font-size:22px;font-weight:900;color:var(--gold)">
+                Miel Pura</div>
+              <div style="font-size:12px;color:var(--gray);margin-top:4px">Miel artesanal en frasco · 250g · 500g · 900g
+              </div>
             </div>
           </div>
         </div>
@@ -735,6 +951,7 @@
           <li><a href="#">BeeEnergy — Sticks deportivos</a></li>
           <li><a href="#">BeeJunior — Para niños</a></li>
           <li><a href="#">Miel Cremada — Textura suave</a></li>
+          <li><a href="#">Miel Pura — Frascos premium</a></li>
         </ul>
       </div>
       <div class="footer-links">
