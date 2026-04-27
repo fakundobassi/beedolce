@@ -723,6 +723,7 @@ footer {
 
 /* ════════════ MOBILE FIXES ════════════ */
 @media (max-width: 600px) {
+  .hero-scroll { bottom: 30px; }
   .tab-nav {
     overflow-x: auto;
     justify-content: flex-start;
