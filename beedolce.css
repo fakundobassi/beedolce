@@ -23,7 +23,7 @@
 
 * { margin:0; padding:0; box-sizing:border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; }
 
 body {
   background: var(--black);
@@ -719,3 +719,53 @@ footer {
   background:linear-gradient(90deg,transparent,var(--amber),var(--gold),transparent);
 }
 .drip-bar.green-drip .drip { background:linear-gradient(to bottom,var(--amber),transparent); }
+
+/* ════════════ MOBILE FIXES ════════════ */
+@media (max-width: 600px) {
+  .tab-nav {
+    overflow-x: auto;
+    justify-content: flex-start;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+  .tab-nav::-webkit-scrollbar { display: none; }
+  .tab-btn {
+    white-space: nowrap;
+    padding: 14px 18px;
+    font-size: 9px;
+    flex-shrink: 0;
+  }
+
+  .nut-table, .jr-nut-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .nut-portion {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .product-visual { overflow: hidden; }
+
+  .anmat-badge {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .features-grid { grid-template-columns: 1fr; }
+
+  .brand-stats { grid-template-columns: repeat(3, 1fr); }
+  .stat-num { font-size: 28px; }
+
+  .contact-section { padding-left: 20px; padding-right: 20px; }
+  footer { padding-left: 20px; padding-right: 20px; }
+  .philosophy { padding-left: 20px; padding-right: 20px; }
+  .products-header { padding-left: 20px; padding-right: 20px; }
+  .features-grid { padding-left: 20px; padding-right: 20px; }
+  .nutrition-section, .jr-nutrition { padding-left: 20px; padding-right: 20px; }
+  .be-hero, .jr-hero { padding-left: 20px; padding-right: 20px; }
+  .brand-intro { padding-left: 20px; padding-right: 20px; }
+}
